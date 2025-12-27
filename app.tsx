@@ -1,8 +1,12 @@
 import { createRoot } from 'react-dom/client';
 import { HermesMap } from './HermesMap';
+import { Nav } from './components/Nav';
 
 function Root() {
-  return <HermesMap />;
+  return <>
+    <Nav />
+    <HermesMap />
+  </>;
 }
 
 /* global document */

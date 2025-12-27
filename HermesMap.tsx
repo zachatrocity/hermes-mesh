@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import { Map, NavigationControl, useControl } from 'react-map-gl/maplibre';
-import type { ViewStateChangeEvent } from 'react-map-gl/maplibre';
+import { Layer, Map, Source, TerrainControl, useControl } from 'react-map-gl/maplibre';
+import type { SkySpecification, TerrainSpecification, ViewStateChangeEvent } from 'react-map-gl/maplibre';
 import { MapboxOverlay as DeckOverlay, MapboxOverlayProps } from '@deck.gl/mapbox';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
@@ -26,7 +26,7 @@ function DeckGLOverlay(props: MapboxOverlayProps) {
 export function HermesMap() {
   // Get initial coordinates from query params or local storage
   const initialCoords = getInitialCoordinates(DEFAULT_COORDINATES);
-  
+
   const [selected, setSelected] = useState<AirportFeature | null>(null);
 
   const initialViewState = {
@@ -52,12 +52,27 @@ export function HermesMap() {
     })
   ];
 
+  const sky: SkySpecification = {
+    'sky-color': '#80ccff',
+    'sky-horizon-blend': 0.5,
+    'horizon-color': '#ccddff',
+    'horizon-fog-blend': 0.5,
+    'fog-color': '#fcf0dd',
+    'fog-ground-blend': 0.2
+  };
+
+  const terrain: TerrainSpecification = { source: 'terrain-dem', exaggeration: 1.5 };
+
   return (
-    <Map 
+    <Map
       initialViewState={initialViewState}
-      mapStyle={MAP_STYLE}
+      // mapStyle={MAP_STYLE}
+      mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
       style={{ width: '100vw', height: '100vh' }}
       onMove={handleMove}
+      maxPitch={85}
+      sky={sky}
+      terrain={terrain}
     >
       {selected && (
         <MapPopup
@@ -68,8 +83,28 @@ export function HermesMap() {
           {selected.properties.name} ({selected.properties.abbrev})
         </MapPopup>
       )}
+
+      <Source
+        id="terrain-dem"
+        type="raster-dem"
+        url="https://demotiles.maplibre.org/terrain-tiles/tiles.json"
+        tileSize={256}
+      />
+      <Source
+        id="hillshade-dem"
+        type="raster-dem"
+        url="https://demotiles.maplibre.org/terrain-tiles/tiles.json"
+        tileSize={256}
+      >
+        <Layer
+          type="hillshade"
+          layout={{ visibility: 'visible' }}
+          paint={{ 'hillshade-shadow-color': '#473B24' }}
+        />
+
+        <TerrainControl {...terrain} position="top-left" />
+      </Source>
       <DeckGLOverlay layers={layers} /* interleaved*/ />
-      <NavigationControl position="top-left" />
     </Map>
   );
 }
