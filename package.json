@@ -1,0 +1,25 @@
+{
+  "name": "hermes-mesh",
+  "author": "zach@zachs.io",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "vite --open",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "deck.gl": "^9.0.0",
+    "maplibre-gl": "^5.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-map-gl": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "typescript": "^5.9.3",
+    "vite": "^4.0.0"
+  }
+}
