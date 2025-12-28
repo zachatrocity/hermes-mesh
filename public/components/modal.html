@@ -1,0 +1,12 @@
+<dialog open id="openModal">
+  <article>
+    <h2>htmx + hypscript</h2>
+    <p>
+      Thanks for playing! Get to work creating some blazing fast static websites
+    </p>
+    <section id="dashboard" hx-get="/api/components/layout/dashboard" hx-trigger="load"></section>
+    <footer>
+      <button hx-on:click='document.getElementById("openModal").remove()'>Okay!</button>
+    </footer>
+  </article>
+</dialog>

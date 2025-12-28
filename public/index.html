@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Hermes Mesh</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://unpkg.com/htmx.org"></script>
+  <script src="https://unpkg.com/htmx-ext-path-params@2.0.0/path-params.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gnat/surreal@main/surreal.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gnat/css-scope-inline@main/script.js"></script>
+  <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.15.0/dist/maplibre-gl.css' />
+  <script src='https://unpkg.com/maplibre-gl@5.15.0/dist/maplibre-gl.js'></script>
+  <script src="https://unpkg.com/deck.gl@8.9.33/dist.min.js"></script>
+  <script src="extensions.js"></script>
+</head>
+
+<body>
+  <header class="container" hx-get="/api/components/layout/header" hx-trigger="load"></header>
+  
+  <main>
+    <div hx-get="/api/components/layout/map" hx-trigger="load"></div>
+  </main>
+
+  <footer class="container" hx-get="/api/components/layout/footer" hx-trigger="load"></footer>
+</body>
+
+</html>

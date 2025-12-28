@@ -1,0 +1,44 @@
+/* Green theme for light color scheme (Default) */
+[data-theme=light],
+:root:not([data-theme=dark]),
+:host:not([data-theme=dark]) {
+  --pico-text-selection-color: rgba(118, 249, 159, 0.25);
+  --pico-primary: #2e8b57; /* Darkened for readability on light backgrounds */
+  --pico-primary-background: #3cb371;
+  --pico-primary-underline: rgba(46, 139, 87, 0.5);
+  --pico-primary-hover: #267348;
+  --pico-primary-hover-background: #2e8b57;
+  --pico-primary-focus: rgba(118, 249, 159, 0.5);
+  --pico-primary-inverse: #fff;
+}
+
+/* Green color for dark color scheme (Auto) */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]),
+  :host:not([data-theme]) {
+    --pico-text-selection-color: rgba(118, 249, 159, 0.1875);
+    --pico-primary: #76f99f; /* Your exact OKLCH color */
+    --pico-primary-background: #4ade80;
+    --pico-primary-underline: rgba(118, 249, 159, 0.5);
+    --pico-primary-hover: #b2ffca;
+    --pico-primary-hover-background: #5ef193;
+    --pico-primary-focus: rgba(118, 249, 159, 0.375);
+    --pico-primary-inverse: #000; /* Dark text for better contrast on bright green */
+  }
+}
+
+/* Green color for dark color scheme (Forced) */
+[data-theme=dark] {
+  --pico-text-selection-color: rgba(118, 249, 159, 0.1875);
+  --pico-primary: #76f99f;
+  --pico-primary-background: #4ade80;
+  --pico-primary-underline: rgba(118, 249, 159, 0.5);
+  --pico-primary-hover: #b2ffca;
+  --pico-primary-hover-background: #5ef193;
+  --pico-primary-focus: rgba(118, 249, 159, 0.375);
+  --pico-primary-inverse: #000;
+}
+
+body {
+    overflow: hidden;
+}

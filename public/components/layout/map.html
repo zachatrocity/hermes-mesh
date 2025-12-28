@@ -1,0 +1,14 @@
+<div id="mapContainer">
+    <style>
+        me { width: 100vw; height: 100vh; }
+    </style>
+    <script>
+        const map = window.map = new maplibregl.Map({
+        container: 'mapContainer', // container id
+        style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json', // style URL
+        center: [0, 0], // starting position [lng, lat]
+        zoom: 1, // starting zoom
+        maplibreLogo: true
+    });
+    </script>
+</div>

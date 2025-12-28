@@ -1,0 +1,17 @@
+<div>
+  <style>
+    me {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0; 
+      text-align: center;
+    }
+  </style>
+  <h1>Hermes</h1>
+  <button hx-get="/api/components/modal" hx-target="body" hx-swap="beforeend">Open a Modal</button>
+</div>
